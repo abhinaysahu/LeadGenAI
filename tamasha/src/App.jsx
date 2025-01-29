@@ -1,21 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
-import './App.css'
-import Navbar from './components/Navbar';
-import { SideBar } from './components/Sidebar';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { SideBar } from "./components/Sidebar";
+import LandingPage from "./pages/LandingPage";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-  
   return (
-    <>
-      <div className='flex items-start  h-screen '>
-      <SideBar/>
-     <Navbar/>
-     </div>
-    </>
-  )
+    <Router>
+      <div className="flex items-start h-screen font-dmsans">
+        <SideBar />
+        <div className="flex-1">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
